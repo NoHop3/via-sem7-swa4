@@ -1,30 +1,49 @@
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import { model } from '@/store/store'
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div>
+    <nav class="nav">
+      <div class="navLeft" v-if="model.user.token !==''">
+      <RouterLink to="/" class="redirect-button"><h3>Home</h3></RouterLink>
+      </div>
+    <div class="navRight">
+      <RouterLink to="/register" class="redirect-button" v-if="model.user.token ===''"><h3>Register</h3></RouterLink>
+      <RouterLink to="/login" class="redirect-button" v-if="model.user.token ===''"><h3>Login</h3></RouterLink>
+      <RouterLink to="/login" class="redirect-button" v-if="model.user.token !==''"><h3>Log out</h3></RouterLink>
+    </div>
+    </nav>
+    <RouterView />
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style scoped>
+.nav{
+  display: flex;
+}
+.navLeft {
+  display: flex;
+  justify-content:flex-start;
+  background-color: rgb(6, 6, 61);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.navRight {
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgb(6, 6, 61);
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.redirect-button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-decoration: none;
+  color: white;
 }
 </style>

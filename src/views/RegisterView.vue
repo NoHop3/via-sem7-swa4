@@ -2,7 +2,7 @@
   <div class="frame">
     <div class="box">
       <form @submit.prevent="register">
-        <h2 class="center">Sign up</h2>
+        <h2 class="center">Register</h2>
         <div class="inputBox">
           <input v-model="username" type="text" id="Username" placeholder="Username" required />
           <i></i>
@@ -16,7 +16,7 @@
           <router-link to="/login">Login</router-link>
         </div>
         <div class="center">
-          <input type="submit" value="Sign Up" />
+          <input type="submit" value="Register" />
         </div>
       </form>
     </div>
