@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import service from '@/services/auth.service';
+import { authenticate } from '@/services/user.service';
 
 export default {
   data() {
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     async login() {
-      if (await service.authenticate(this.username, this.password)) {
+      if (await authenticate(this.username, this.password)) {
         this.$router.push('/login');
       }
     },

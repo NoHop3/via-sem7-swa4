@@ -1,33 +1,33 @@
-import { reactive } from 'vue'
-import type { UserData } from '../models/user'
+import { reactive } from 'vue';
+import type { UserModel } from '../models/user';
 
-export type Model = {
-    readonly user: Readonly<UserData>,
+export type Store = {
+  readonly user: Readonly<UserModel>;
 
-    authenticate(user: UserData): void,
-    logout(): void
-}
+  authenticate(user: UserModel): void;
+  logout(): void;
+};
 
-export const model: Model = reactive({
-    user: {
-        username: '',
-        password: '',
-        token: '',
-        userId: 0,
-        admin: false
-    } as UserData,
+export const store: Store = reactive({
+  user: {
+    username: '',
+    password: '',
+    token: '',
+    userId: 0,
+    admin: false,
+  } as UserModel,
 
-    authenticate(user: UserData) {
-        this.user = { ...user }
-    },
-    
-    logout() {
-        this.user = {
-            username: '',
-            password: '',
-            token: '',
-            userId: 0,
-            admin: false
-        }
-    }
-})
+  authenticate(user: UserModel) {
+    this.user = { ...user };
+  },
+
+  logout() {
+    this.user = {
+      username: '',
+      password: '',
+      token: '',
+      userId: 0,
+      admin: false,
+    };
+  },
+});
