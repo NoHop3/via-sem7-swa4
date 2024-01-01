@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { model } from '@/store/store'
+import { store } from '@/store/store'
 </script>
 
 <template>
   <div>
     <nav class="nav">
-      <div class="navLeft" v-if="model.user.token !==''">
+      <div class="navLeft" v-if="store.user.token !==''">
       <RouterLink to="/" class="redirect-button"><h3>Home</h3></RouterLink>
+      <RouterLink to="/play" class="redirect-button"><h3>Play</h3></RouterLink>
+      <RouterLink to="/profile" class="redirect-button"><h3>Profile</h3></RouterLink>
+      <RouterLink to="/scores" class="redirect-button"><h3>Scores</h3></RouterLink>
       </div>
     <div class="navRight">
-      <RouterLink to="/register" class="redirect-button" v-if="model.user.token ===''"><h3>Register</h3></RouterLink>
-      <RouterLink to="/login" class="redirect-button" v-if="model.user.token ===''"><h3>Login</h3></RouterLink>
-      <RouterLink to="/login" class="redirect-button" v-if="model.user.token !==''"><h3>Log out</h3></RouterLink>
+      <RouterLink to="/register" class="redirect-button" v-if="store.user.token ===''"><h3>Register</h3></RouterLink>
+      <RouterLink to="/login" class="redirect-button" v-if="store.user.token ===''"><h3>Login</h3></RouterLink>
+      <RouterLink to="/login" class="redirect-button" v-if="store.user.token !==''"><h3>Log out</h3></RouterLink>
     </div>
     </nav>
     <RouterView />

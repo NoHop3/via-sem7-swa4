@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
+import Profile from '../views/Profile.vue';
+import Scores from '../views/Scores.vue';
+import Board from '../views/Board.vue';
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -12,7 +15,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/register',
+      path: '/sign-up',
       name: 'register',
       component: Register,
     },
@@ -20,6 +23,21 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: Login,
+    },
+    {
+      path: '/play',
+      name: 'board',
+      component: Board,
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
+    },
+    {
+      path: '/scores',
+      name: 'scores',
+      component: Scores,
     },
   ],
 });
